@@ -78,11 +78,38 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 ```
+AndroidManifest.xml:
+```
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Ex1">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
+```
 ## OUTPUT
 
-<img width="512" height="1037" alt="image" src="https://github.com/user-attachments/assets/d248a31f-90c1-4db8-9adf-e733a56d4c45" />
 
+<img width="1919" height="1199" alt="image" src="https://github.com/user-attachments/assets/ad245b40-56d1-4bf7-b2a7-583c883a47c5" />
 
 
 
