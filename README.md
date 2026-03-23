@@ -33,6 +33,80 @@ Developed by: Aravindan SD
 Registeration Number : 212224243001
 */
 ```
+MainActivity.java:
+```
+package com.example.ex1;
+
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
+
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = "LifecycleEvents";
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_main);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+
+        showMessage("onCreate");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        showMessage("onStart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        showMessage("onResume");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        showMessage("onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        showMessage("onStop");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        showMessage("onRestart");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        showMessage("onDestroy");
+    }
+
+    private void showMessage(String message) {
+        Log.d(TAG, message);
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+}
+```
 Activity_main.xml:
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -45,38 +119,15 @@ Activity_main.xml:
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="278dp"
-        android:layout_height="65dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Hello World!"
-        android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.759"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-```
-MainActivity.java:
-```
-package com.example.ex1;
-
-import android.os.Bundle;
-
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
-public class MainActivity extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-    }
-}
 ```
 AndroidManifest.xml:
 ```
@@ -92,7 +143,7 @@ AndroidManifest.xml:
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Ex1">
+        android:theme="@style/Theme.EX1">
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -106,12 +157,14 @@ AndroidManifest.xml:
 
 </manifest>
 ```
+
 ## OUTPUT
 
 
 <img width="1919" height="1199" alt="image" src="https://github.com/user-attachments/assets/ad245b40-56d1-4bf7-b2a7-583c883a47c5" />
-
-
+<img width="1344" height="2992" alt="image" src="https://github.com/user-attachments/assets/ba4b3864-3d3f-4f3d-984c-0f26f16401b7" />
+<img width="1344" height="2992" alt="image" src="https://github.com/user-attachments/assets/f5636439-e15e-4df6-bb24-a6fd5a52fd10" />
+<img width="1344" height="2992" alt="image" src="https://github.com/user-attachments/assets/aa1c8ad9-d55d-4fe1-8aa9-f851095ab5ec" />
 
 ## RESULT
 Thus a Simple Android Application create a HelloWorld Activity using all lifecycles methods to display messages using Android Studio is developed and executed successfully.
